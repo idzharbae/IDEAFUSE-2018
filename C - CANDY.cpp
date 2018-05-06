@@ -34,7 +34,7 @@ int dijkstra(int n,int source, vector<pair<int, int> > G[], int dest) {
                    
 				D[v] = D[u] + weight;
                 Q.insert( {D[v], v} );
-               //cout<<D[v]<<endl<<endl;
+              // cout<<D[v]<<endl<<endl;
 			}
 			
             if(v != dest and D[u] + weight < D[v] ) {
@@ -44,7 +44,7 @@ int dijkstra(int n,int source, vector<pair<int, int> > G[], int dest) {
 				D[v] = D[u] + weight;
                 Q.insert( {D[v], v} );
                 candy[v] = candy[u] + arr[v];
-               // cout<<v<<" "<<candy[v]<<" Candy now\n";
+              // cout<<v<<" "<<candy[v]<<" Candy now\n";
             }
         }
     }
@@ -59,10 +59,11 @@ int main(){
 	
 	for(int i = 0; i < N; i++){
 	if(i < N-1){	
-		for(int j = 0; j < M; j++){
-			adj[(i+1)*M+j].push_back({i*M, max(1,(2*j))});
-			adj[(i+1)*M+j].push_back({(i+1)*M-1, max(1,2*(M-j-1))});
-		}
+		adj[(i+2)*M-1].push_back({(i+1)*M-1, 1});
+		
+		for(int j = 0; j < M; j++)
+			adj[(i+1)*M+j].push_back({i*M, 1+j});
+		
 
 		}
 		for(int j = 0; j < M-1; j++){
